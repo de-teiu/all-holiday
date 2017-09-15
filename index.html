@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="./assets/css/main.css"/>
+  <title>なるほどHOLIDAYじゃねーの</title>
+</head>
+<body>
+  <div id="calendar">
+    <div class="flex main">
+      <!-- 前月移動ボタン -->
+      <div class="headerItem shiftButton">
+        <div class="dateItem border table button" v-on:click="shift('back')">
+          <i class="fa fa-caret-left arrow middle" aria-hidden="true"></i>
+        </div>
+      </div>
+      <!-- 年月表示 -->
+      <div v-cloak class="headerItem monthYear">
+        <div class="dateItem border table">
+          <span class="middle">{{year}}年{{padLeft(month)}}月</span>
+        </div>
+      </div>
+      <!-- 次月移動 -->
+      <div class="headerItem shiftButton">
+        <div class="dateItem border table button" v-on:click="shift('next')">
+          <i class="fa fa-caret-right arrow middle" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div v-cloak class="flex main">
+      <!-- 曜日 -->
+      <div class="weekList" v-for="date in weekList">
+        <div class="dateItem border">
+          <p>{{date}}</p>
+        </div>
+      </div>
+    </div>
+    <div v-cloak class="flex main">
+      <!-- 日付 -->
+      <div class="list" v-for="date in list">
+        <div class="dateItem border" v-bind:class="{ notThisMonth: date.isNotThisMonth }">
+          <p class="date">{{date.date}}</p>
+          <p class="six">{{date.six}}</p>
+          <p class="anniv">{{date.anniv}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="./assets/vendor/vue.js"></script>
+  <script src="./assets/js/anniversary.js"></script>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
